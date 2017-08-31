@@ -1,7 +1,16 @@
+<audio id="themeSong" loop>
+   <source src="./public/images/cars.ogg" type="audio/wav" />
+</audio>
+
+
 <h1>Word Game!!!!</h1>
+
 <form class="" action="/guess" method="post">
-  <input type="text" name="guess" value="" placeholder="Guess A Letter!">
+  <input type="text" name="guessInput" value="" placeholder="Guess A Letter!">
   <input type="submit"  value="Make A Guess!">
 </form>
-<p>{{blank}}</p>
-<h3>Letters Guessed : </h3>
+{{#each letterArray}}
+<p class="hmWord" >{{this}}</p>
+{{/each}}
+
+<h3>Letters Guessed : {{guesses}} </h3>

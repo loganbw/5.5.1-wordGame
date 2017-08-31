@@ -1,0 +1,9 @@
+body{
+  background-image: './images/cars.jpeg';
+  background-repeat: no-repeat;
+}
+
+
+.hmWord{
+  display: inline-block;
+}
