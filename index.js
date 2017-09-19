@@ -22,9 +22,6 @@ app.use(session({
 
 
 app.use('/', (req, res, next) => {
-
-
-
 if (!req.session.word){
   let randomize = Math.floor((Math.random()*(words.length-1)));
   let randomWord = words.filter(word => word.length > 3)[randomize].split('');
@@ -69,7 +66,18 @@ app.post('/guess',(req,res)=>{
     };
 
 });
+app.post('/reset', (req,res) =>{
+  let randomize = Math.floor((Math.random()*(words.length-1)));
+  let randomWord = words.filter(word => word.length > 3)[randomize].split('');
+  req.session.letter.splice(0);
+  req.session.word.splice(0);
+  req.session.guess.splice(0);
+  req.session.word.push.apply(req.session.word, randomWord);
+  req.session.letter.push.apply(req.session.letter, randomWord);
+  req.session.letter.fill("_");
 
+  return res.redirect('/');
+});
 
 
 app.listen(3000)
